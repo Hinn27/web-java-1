@@ -13,6 +13,7 @@ import java.util.ArrayList;
 @SpringBootApplication
 @RestController
 @RequestMapping("/api")
+
 public class Lab02Application {
 
     public static void main(String[] args) {
