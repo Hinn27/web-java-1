@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import java.util.List;
 import java.util.ArrayList;
 import com.example.demo.Student;
@@ -44,18 +45,24 @@ public class Lab02Application {
         return "Tên = " + name + ", tuổi = " + age;
     }
 
-    // Bài 4: trả về JSON Object
-    @GetMapping("/student")
+    // Bài 4A: trả về JSON Object
+    @GetMapping("/students")
     public Student getStudent() {
         return new Student(1, "Nguyễn Văn A", 20);
     }
 
-    // Bài 5: trả về list
+    // Bài 4B: trả về list
     @GetMapping("/studentall")
     public List<Student> getStudents() {
         List<Student> list = new ArrayList<>();
         list.add(new Student(1, "A", 20));
         list.add(new Student(2, "B", 21));
         return list;
+    }
+
+    // Bài 5: dữ liệu nằm trong Header
+    @GetMapping("/getstudent")
+    public String getStudents(@RequestHeader("Authorization") String authorization) {
+        return "Authorization = " + authorization;
     }
 }
