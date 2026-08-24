@@ -1,4 +1,4 @@
-package com.example.buoi_1_170826;
+package com.example.lab02;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,22 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 import java.util.ArrayList;
 
 @SpringBootApplication
 @RestController
-
-public class Buoi1170826Application {
+@RequestMapping("/api")
+public class Lab02Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(Buoi1170826Application.class, args);
-    }
-
-    // Trang mặc định
-    @GetMapping("/")
-    public String home() {
-        return "Ứng dụng Spring Boot đang chạy";
+        SpringApplication.run(Lab02Application.class, args);
     }
 
     // Bài 1: Hello
