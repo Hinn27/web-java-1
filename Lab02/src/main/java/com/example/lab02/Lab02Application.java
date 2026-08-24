@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 import java.util.ArrayList;
+import com.example.demo.Student;
 
 @SpringBootApplication
 @RestController
@@ -33,7 +34,7 @@ public class Lab02Application {
     }
 
     // Bài 3: API nhận tham số
-    @GetMapping("/student", params = "name")
+    @GetMapping(value = "/student", params = "name")
     public String greet(@RequestParam String name) {
         return "Xin chào " + name;
     }
@@ -43,55 +44,14 @@ public class Lab02Application {
         return "Tên = " + name + ", tuổi = " + age;
     }
 
-
     // Bài 4: trả về JSON Object
-    // Model
-    public static class Student {
-        private int id;
-        private String name;
-        private int age;
-
-        // constructor
-        public Student(int id, String name, int age) {
-            this.id = id;
-            this.name = name;
-            this.age = age;
-        }
-
-        // getter và setter
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public int getAge() {
-            return age;
-        }
-
-        public void setAge(int age) {
-            this.age = age;
-        }
-    }
-
-    // Controller
     @GetMapping("/student")
     public Student getStudent() {
         return new Student(1, "Nguyễn Văn A", 20);
     }
 
     // Bài 5: trả về list
-    @GetMapping("/students")
+    @GetMapping("/studentall")
     public List<Student> getStudents() {
         List<Student> list = new ArrayList<>();
         list.add(new Student(1, "A", 20));
