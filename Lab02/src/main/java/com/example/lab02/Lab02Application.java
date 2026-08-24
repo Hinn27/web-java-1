@@ -27,21 +27,22 @@ public class Lab02Application {
     }
 
     // Bài 2: API nhận tham số
-    @GetMapping("/greet")
+    @GetMapping("/student/{id}")
+    public String getStudent(@PathVariable int id) {
+        return "Sinh viên có mã: " + id;
+    }
+
+    // Bài 3: API nhận tham số
+    @GetMapping("/student", params = "name")
     public String greet(@RequestParam String name) {
         return "Xin chào " + name;
     }
 
-    @GetMapping("/students/search")
-    public String search(@RequestParam String keyword, @RequestParam(defaultValue = "1") int page) {
-        return "keyword=" + keyword + ", page=" + page;
+    @GetMapping("/searchStudent")
+    public String searchStudent(@RequestParam String name, @RequestParam(defaultValue = "1") int age) {
+        return "Tên = " + name + ", tuổi = " + age;
     }
 
-    // Bài 3: API với Path Variable
-    @GetMapping("/students/{id}")
-    public String getStudent(@PathVariable int id) {
-        return "Sinh viên có mã: " + id;
-    }
 
     // Bài 4: trả về JSON Object
     // Model
